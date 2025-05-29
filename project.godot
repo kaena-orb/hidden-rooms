@@ -1,0 +1,26 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Hidden rooms POC"
+run/main_scene="uid://d0clhg85swu3s"
+config/features=PackedStringArray("4.4", "Forward Plus")
+config/icon="res://icon.svg"
+
+[display]
+
+window/size/mode=3
+
+[layer_names]
+
+2d_render/layer_1="outside"
+2d_render/layer_2="inside"
+2d_render/layer_6="rooms"
