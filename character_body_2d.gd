@@ -5,6 +5,7 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
 func _ready():
+	disable_interior_lights()
 	$DummyBackground.visible = false
 
 func _physics_process(delta):
@@ -25,3 +26,11 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+func disable_interior_lights():
+	$Sprite2D.light_mask = $Sprite2D.light_mask & ~(1 << 15)
+	#$Sprite2D.light_mask = $Sprite2D.light_mask & ~(1 << 16)
+
+func enable_interior_lights():
+	$Sprite2D.light_mask = $Sprite2D.light_mask | ( 1<< 15)
+	#$Sprite2D.light_mask = $Sprite2D.light_mask | ( 1<< 16)

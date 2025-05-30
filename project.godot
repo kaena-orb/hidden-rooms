@@ -21,6 +21,14 @@ window/size/mode=3
 
 [layer_names]
 
-2d_render/layer_1="outside"
-2d_render/layer_2="inside"
-2d_render/layer_6="rooms"
+2d_render/layer_1="general"
+2d_render/layer_2="exterior_general"
+2d_render/layer_3="exterior_actors"
+2d_render/layer_4="exterior_terrain"
+2d_render/layer_13="interior_general"
+2d_render/layer_14="interior_actors"
+2d_render/layer_15="interior_terrain"
+2d_render/layer_16="interior_outside_general_simulated"
+2d_render/layer_17="interior_outside_actors_simulated"
+2d_render/layer_18="interior_outside_terrain_simulated"
+2d_render/layer_20="collectible"

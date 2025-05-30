@@ -2,6 +2,7 @@ extends Node2D
 
 
 func _on_house_entered_room(color :  Color = Color("#555555")):
+	$CharacterBody2D.enable_interior_lights()
 	#var tween = create_tween()
 	#tween.tween_property(%CanvasModulate, "color", color, 0.5)
 	pass
@@ -10,6 +11,7 @@ func _on_house_entered_room(color :  Color = Color("#555555")):
 
 
 func _on_house_exited_room():
+	$CharacterBody2D.disable_interior_lights()
 	#var tween = create_tween()
 	#tween.tween_property(%CanvasModulate, "color", Color("#ffffff"), 0.5)
 	pass

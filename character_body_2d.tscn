@@ -24,12 +24,13 @@ fill = 1
 fill_to = Vector2(0.96789, 0.972069)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
-light_mask = 524291
-visibility_layer = 524291
+light_mask = 634887
+visibility_layer = 634887
 collision_mask = 2
 script = ExtResource("1_f50pn")
 
 [node name="DummyBackground" type="Sprite2D" parent="."]
+visible = false
 light_mask = 524289
 visibility_layer = 513
 position = Vector2(-16.5, -30)
@@ -37,8 +38,8 @@ scale = Vector2(1.64904, 388)
 texture = SubResource("GradientTexture1D_f50pn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-light_mask = 524291
-visibility_layer = 524291
+light_mask = 32769
+visibility_layer = 32769
 texture = ExtResource("2_ij6vw")
 region_enabled = true
 region_rect = Rect2(109.095, 29.8949, 22.7821, 19.9781)

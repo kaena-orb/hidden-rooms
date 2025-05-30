@@ -1,8 +1,9 @@
-[gd_scene load_steps=31 format=4 uid="uid://dd87xu0bcjcyh"]
+[gd_scene load_steps=29 format=4 uid="uid://dd87xu0bcjcyh"]
 
 [ext_resource type="Script" uid="uid://thij2ahmq165" path="res://house.gd" id="1_metfq"]
 [ext_resource type="Texture2D" uid="uid://t2ggo1q2itq8" path="res://Legacy Adventure Pack - VILLAGE/Final/Tiles/Tiles.png" id="2_6syyc"]
 [ext_resource type="Texture2D" uid="uid://lwij8oskmqit" path="res://icon.svg" id="3_6syyc"]
+[ext_resource type="PackedScene" uid="uid://bw3ijoscdfcfc" path="res://interior_torch.tscn" id="4_o1325"]
 
 [sub_resource type="Gradient" id="Gradient_vy7fe"]
 offsets = PackedFloat32Array(0)
@@ -480,6 +481,172 @@ sources/0 = SubResource("TileSetAtlasSource_vonw3")
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_n6hdu"]
 
+[sub_resource type="Gradient" id="Gradient_metfq"]
+offsets = PackedFloat32Array(0, 0.173333, 0.846667, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.911392, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Animation" id="Animation_2y50f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Inside/Lights/LightOccluder2D4:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-35, -20)]
+}
+
+[sub_resource type="Animation" id="Animation_metfq"]
+resource_name = "new_animation"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Inside/Lights/LightOccluder2D4:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-24, -20), Vector2(-24, 47)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6syyc"]
+_data = {
+&"RESET": SubResource("Animation_2y50f"),
+&"new_animation": SubResource("Animation_metfq")
+}
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_metfq"]
+polygon = PackedVector2Array(-105, -29, -108, -27, -107, -24, -104, -26)
+
+[sub_resource type="Gradient" id="Gradient_o1325"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vy7fe"]
+gradient = SubResource("Gradient_o1325")
+width = 2048
+height = 2048
+fill = 1
+fill_to = Vector2(0.344037, 0.793578)
+
+[sub_resource type="Animation" id="Animation_10qhy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Inside/Lights/Sun:texture_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Inside/Lights/Sun:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Inside/Lights/Sun:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.759908, 0.536789, 0.300291, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Inside/Lights/Sun:shadow_filter_smooth")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_vy7fe"]
+resource_name = "breathing"
+length = 5.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Inside/Lights/Sun:texture_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [2.0, 1.85, 2.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Inside/Lights/Sun:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [13.0, 12.0, 13.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("Inside/Lights/Sun:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.759908, 0.536789, 0.300291, 1), Color(0.606706, 0.417095, 0.212677, 1), Color(0.759908, 0.536789, 0.300291, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Inside/Lights/Sun:shadow_filter_smooth")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2y50f"]
+_data = {
+&"RESET": SubResource("Animation_10qhy"),
+&"breathing": SubResource("Animation_vy7fe")
+}
+
 [sub_resource type="Gradient" id="Gradient_6syyc"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
@@ -531,193 +698,13 @@ _data = {
 }
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6syyc"]
-polygon = PackedVector2Array(-112, -46, -90, -46, -90, 0, 96, 0, 101, -161, 85, -161, 85, -1, -71, -1, -70, -49, -104, -50, -102, -81, -113, -81, -113, -51)
+polygon = PackedVector2Array(-112, -46, -90, -46, -90, 0, 96, 0, 101, -161, 80, -161, 80, -1, -71, -1, -70, -49, -104, -50, -102, -81, -113, -82, -113, -51)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vy7fe"]
-polygon = PackedVector2Array(-114, -14, -112, -81, -123, -81, -116, -31)
+polygon = PackedVector2Array(-104, -13, -112, -81, -123, -81, -116, -31, -115, -13)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_o1325"]
-polygon = PackedVector2Array(-58, -90, -122, -80, -124, -14, -67, -62, -4, -62, 55, -17, 65, -15, -9, -90)
-
-[sub_resource type="Gradient" id="Gradient_metfq"]
-offsets = PackedFloat32Array(0, 0.173333, 0.846667, 1)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.911392, 1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="Animation" id="Animation_2y50f"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Outside/Lights/LightOccluder2D4:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-35, -20)]
-}
-
-[sub_resource type="Animation" id="Animation_metfq"]
-resource_name = "new_animation"
-length = 3.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Outside/Lights/LightOccluder2D4:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-24, -20), Vector2(-24, 47)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6syyc"]
-_data = {
-&"RESET": SubResource("Animation_2y50f"),
-&"new_animation": SubResource("Animation_metfq")
-}
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_metfq"]
-polygon = PackedVector2Array(-105, -29, -108, -27, -107, -24, -103, -25)
-
-[sub_resource type="Gradient" id="Gradient_o1325"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_vy7fe"]
-gradient = SubResource("Gradient_o1325")
-width = 2048
-height = 2048
-fill = 1
-fill_to = Vector2(0.344037, 0.793578)
-
-[sub_resource type="Animation" id="Animation_10qhy"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Outside/Lights/Sun:texture_scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [2.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Outside/Lights/Sun:energy")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [2.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Outside/Lights/Sun:color")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.759908, 0.536789, 0.300291, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Outside/Lights/Sun:shadow_filter_smooth")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_vy7fe"]
-resource_name = "breathing"
-length = 5.0
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = false
-tracks/0/path = NodePath("Outside/Lights/Sun:texture_scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.5, 5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [2.0, 1.85, 2.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Outside/Lights/Sun:energy")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 2.5, 5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [13.0, 12.0, 13.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = false
-tracks/2/path = NodePath("Outside/Lights/Sun:color")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 2.5, 5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(0.759908, 0.536789, 0.300291, 1), Color(0.606706, 0.417095, 0.212677, 1), Color(0.759908, 0.536789, 0.300291, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Outside/Lights/Sun:shadow_filter_smooth")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 2.5, 5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, 1.0, 0.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_2y50f"]
-_data = {
-&"RESET": SubResource("Animation_10qhy"),
-&"breathing": SubResource("Animation_vy7fe")
-}
-
-[sub_resource type="Gradient" id="Gradient_1ainy"]
-interpolation_mode = 2
-interpolation_color_space = 2
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_o1325"]
-gradient = SubResource("Gradient_1ainy")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 0)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_10qhy"]
-polygon = PackedVector2Array(-89, 33, -81, 33, -80, 79, -89, 81)
+polygon = PackedVector2Array(-64, -96, -122, -80, -124, -14, -67, -62, -4, -62, 55, -17, 79, -12, -11, -101)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_metfq"]
 size = Vector2(42, 3)
@@ -731,9 +718,10 @@ script = ExtResource("1_metfq")
 unique_name_in_owner = true
 visible = false
 visibility_layer = 4
-color = Color(0.147672, 0.147672, 0.147672, 1)
+color = Color(0.230315, 0.230315, 0.230315, 1)
 
 [node name="DummyBackground" type="Sprite2D" parent="."]
+visible = false
 light_mask = 3
 position = Vector2(-16.5, -30)
 scale = Vector2(1.64904, 388)
@@ -742,15 +730,14 @@ texture = SubResource("GradientTexture1D_10qhy")
 [node name="Inside" type="Node2D" parent="."]
 
 [node name="Foreground" type="TileMapLayer" parent="Inside"]
-light_mask = 2
-visibility_layer = 2
-z_index = 10
+light_mask = 32769
+visibility_layer = 4096
 tile_map_data = PackedByteArray("AAAEAPz/AAAGAAsAAAAEAP3/AAAGAAsAAAAEAP7/AAAGAAsAAAAEAP//AAAGAAsAAAAEAAAAAAAGAAsAAAAEAAEAAAAGAAsAAAAEAAIAAAAGAAsAAAAEAAMAAAAGAAsAAAAEAAQAAAAGAAsAAAD4//z/AAACAAwAAAD4//3/AAADAAsAAAD4/wAAAAADAAoAAAD4//v/AAADAAsAAAAEAPv/AAAGAAsAAAD6//r/AAACAAkAAAD4//r/AAAAAAkAAAD5//r/AAABAAkAAAD7//r/AAADAAkAAAD8//r/AAAEAAkAAAD9//r/AAAEAAkAAAD+//r/AAAFAAkAAAD///r/AAAGAAkAAAAAAPr/AAAEAAkAAAABAPr/AAAHAAkAAAACAPr/AAAIAAkAAAADAPr/AAAJAAkAAAAEAPr/AAAKAAkAAAD5//n/AAABAAgAAAD6//n/AAACAAgAAAD7//n/AAADAAgAAAD8//n/AAAEAAgAAAD9//n/AAAEAAgAAAD+//n/AAAFAAgAAAD///n/AAAGAAgAAAAAAPn/AAAGAAgAAAABAPn/AAAHAAgAAAACAPn/AAAIAAgAAAADAPn/AAAJAAgAAAD6//j/AAACAAcAAAD7//j/AAADAAcAAAD8//j/AAAEAAcAAAD9//j/AAAFAAcAAAD+//j/AAAFAAcAAAD///j/AAAFAAcAAAAAAPj/AAAGAAcAAAABAPj/AAAHAAcAAAACAPj/AAAIAAcAAAD7//f/AAADAAYAAAD8//f/AAAEAAYAAAD9//f/AAAFAAYAAAD+//f/AAAFAAYAAAD///f/AAAFAAYAAAAAAPf/AAAGAAYAAAABAPf/AAAHAAYAAAD8//b/AAAEAAUAAAD9//b/AAAFAAUAAAD+//b/AAAFAAUAAAD///b/AAAFAAUAAAAAAPb/AAAGAAUAAAD9//X/AAAFAAQAAAD+//X/AAAFAAQAAAD///X/AAAFAAQAAAD4/wEAAAACAA0AAAD5/wIAAAACAA4AAAD6/wIAAAADAA4AAAD6/wMAAAACAA8AAAD6/wQAAAACAA8AAAD4//7/AAADAAoAAAA=")
 tile_set = SubResource("TileSet_oi3di")
 
 [node name="Backgrund" type="TileMapLayer" parent="Inside"]
-light_mask = 6
-visibility_layer = 6
+light_mask = 32769
+visibility_layer = 36864
 material = SubResource("CanvasItemMaterial_n6hdu")
 tile_map_data = PackedByteArray("AAD7//7/AAABAAEAAAD8//7/AAACAAEAAAD9//7/AAADAAEAAAD7////AAABAAEAAAD8////AAACAAEAAAD9////AAADAAEAAAD7/wAAAAABAAEAAAD8/wAAAAACAAEAAAD9/wAAAAADAAEAAAD7/wEAAAABAAEAAAD8/wEAAAACAAEAAAD9/wEAAAADAAEAAAD7/wIAAAABAAEAAAD8/wIAAAACAAEAAAD9/wIAAAADAAEAAAD7/wMAAAABAAEAAAD8/wMAAAACAAEAAAD9/wMAAAADAAEAAAD7/wQAAAABAAEAAAD8/wQAAAACAAEAAAD9/wQAAAADAAEAAAD+//7/AAABAAEAAAD///7/AAACAAEAAAAAAP7/AAADAAEAAAD+////AAABAAEAAAD/////AAACAAEAAAAAAP//AAADAAEAAAD+/wAAAAABAAEAAAD//wAAAAACAAEAAAAAAAAAAAADAAEAAAD+/wEAAAABAAEAAAD//wEAAAACAAEAAAAAAAEAAAADAAEAAAD+/wIAAAABAAEAAAD//wIAAAACAAEAAAAAAAIAAAADAAEAAAD+/wMAAAABAAEAAAD//wMAAAACAAEAAAAAAAMAAAADAAEAAAD+/wQAAAABAAEAAAD//wQAAAACAAEAAAAAAAQAAAADAAEAAAABAP7/AAABAAEAAAACAP7/AAACAAEAAAADAP7/AAADAAEAAAABAP//AAABAAEAAAACAP//AAACAAEAAAADAP//AAADAAEAAAABAAAAAAABAAEAAAACAAAAAAACAAEAAAADAAAAAAADAAEAAAABAAEAAAABAAEAAAACAAEAAAACAAEAAAADAAEAAAADAAEAAAABAAIAAAABAAEAAAACAAIAAAACAAEAAAADAAIAAAADAAEAAAABAAMAAAABAAEAAAACAAMAAAACAAEAAAADAAMAAAADAAEAAAABAAQAAAABAAEAAAACAAQAAAACAAEAAAADAAQAAAADAAEAAAD5//v/AAACAAEAAAD6//v/AAADAAEAAAD5//z/AAACAAEAAAD6//z/AAADAAEAAAD5//3/AAACAAEAAAD6//3/AAADAAEAAAD7//v/AAABAAEAAAD8//v/AAACAAEAAAD9//v/AAADAAEAAAD7//z/AAABAAEAAAD8//z/AAACAAEAAAD9//z/AAADAAEAAAD7//3/AAABAAEAAAD8//3/AAACAAEAAAD9//3/AAADAAEAAAD+//v/AAABAAEAAAD///v/AAACAAEAAAAAAPv/AAADAAEAAAD+//z/AAABAAEAAAD///z/AAACAAEAAAAAAPz/AAADAAEAAAD+//3/AAABAAEAAAD///3/AAACAAEAAAAAAP3/AAADAAEAAAABAPv/AAABAAEAAAACAPv/AAACAAEAAAADAPv/AAADAAEAAAABAPz/AAABAAEAAAACAPz/AAACAAEAAAADAPz/AAADAAEAAAABAP3/AAABAAEAAAACAP3/AAACAAEAAAADAP3/AAADAAEAAAD5//7/AAABAAEAAAD6//7/AAACAAEAAAD5////AAABAAEAAAD6////AAACAAEAAAD5/wAAAAABAAEAAAD6/wAAAAACAAEAAAD5/wEAAAABAAEAAAD6/wEAAAACAAEAAAA=")
 tile_set = SubResource("TileSet_oi3di")
@@ -758,12 +745,83 @@ tile_set = SubResource("TileSet_oi3di")
 [node name="Lights" type="Node2D" parent="Inside"]
 unique_name_in_owner = true
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Inside/Lights"]
+light_mask = 32768
+visibility_layer = 32768
+position = Vector2(-111, -2)
+rotation = 0.523599
+amount = 6
+lifetime = 10.0
+preprocess = 5.0
+speed_scale = 1.2
+emission_shape = 3
+emission_rect_extents = Vector2(5, 7.5)
+gravity = Vector2(1, -0.25)
+orbit_velocity_min = -0.01
+orbit_velocity_max = -0.01
+color_ramp = SubResource("Gradient_metfq")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="Inside/Lights"]
+light_mask = 32768
+visibility_layer = 32768
+position = Vector2(-107, -12)
+rotation = 0.523599
+amount = 6
+lifetime = 10.0
+preprocess = 5.0
+speed_scale = 1.2
+emission_shape = 3
+emission_rect_extents = Vector2(5, 7.5)
+gravity = Vector2(1, 0.5)
+orbit_velocity_min = 0.01
+orbit_velocity_max = 0.01
+color_ramp = SubResource("Gradient_metfq")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Inside/Lights"]
+root_node = NodePath("../../..")
+libraries = {
+&"": SubResource("AnimationLibrary_6syyc")
+}
+autoplay = "new_animation"
+
+[node name="LightOccluder2D4" type="LightOccluder2D" parent="Inside/Lights"]
+position = Vector2(-35, -20)
+occluder = SubResource("OccluderPolygon2D_metfq")
+occluder_light_mask = 36864
+
+[node name="Sprite2D" type="Sprite2D" parent="Inside/Lights/LightOccluder2D4"]
+position = Vector2(-105.947, -26.4278)
+rotation = -0.523599
+scale = Vector2(0.0315207, 0.0247769)
+skew = 0.179769
+texture = ExtResource("3_6syyc")
+
+[node name="Sun" type="PointLight2D" parent="Inside/Lights"]
+position = Vector2(-159, -18)
+rotation = 0.125844
+scale = Vector2(0.340942, 0.340942)
+color = Color(0.759908, 0.536789, 0.300291, 1)
+energy = 2.0
+range_item_cull_mask = 32768
+shadow_enabled = true
+shadow_filter = 2
+shadow_item_cull_mask = 32768
+texture = SubResource("GradientTexture2D_vy7fe")
+texture_scale = 2.0
+
+[node name="AnimationPlayer3" type="AnimationPlayer" parent="Inside/Lights"]
+root_node = NodePath("../../..")
+libraries = {
+&"": SubResource("AnimationLibrary_2y50f")
+}
+autoplay = "breathing"
+
 [node name="PointLight2D2" type="PointLight2D" parent="Inside/Lights"]
-position = Vector2(-26, -126)
+position = Vector2(-25, -126)
 scale = Vector2(0.340942, 0.340942)
 color = Color(0.759908, 0.536789, 0.300291, 1)
 energy = 1.5
-range_item_cull_mask = 2
+range_item_cull_mask = 4096
 shadow_enabled = true
 shadow_filter = 2
 shadow_item_cull_mask = 2
@@ -779,118 +837,30 @@ libraries = {
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Inside/Lights"]
 position = Vector2(-10, 81)
 occluder = SubResource("OccluderPolygon2D_6syyc")
-sdf_collision = false
-occluder_light_mask = 6
+occluder_light_mask = 32769
 
 [node name="LightOccluder2D3" type="LightOccluder2D" parent="Inside/Lights"]
 position = Vector2(-8, -2)
 occluder = SubResource("OccluderPolygon2D_vy7fe")
-occluder_light_mask = 6
+occluder_light_mask = 32769
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="Inside/Lights"]
 position = Vector2(11, -66)
 occluder = SubResource("OccluderPolygon2D_o1325")
-occluder_light_mask = 6
+occluder_light_mask = 32769
+
+[node name="OutsideTorch" parent="Inside" instance=ExtResource("4_o1325")]
+position = Vector2(-60, 68)
 
 [node name="Outside" type="Node2D" parent="."]
+visible = false
 
 [node name="Outside" type="TileMapLayer" parent="Outside"]
 unique_name_in_owner = true
-visible = false
-z_index = 100
+light_mask = 2
+visibility_layer = 2
 tile_map_data = PackedByteArray("AAD9//7/AAAEAAwAAAD9////AAAEAAwAAAD+//7/AAAFAAwAAAD+////AAAFAAwAAAD///7/AAAEAAwAAAD/////AAAEAAwAAAAAAP7/AAAFAAwAAAAAAP//AAAFAAwAAAD//wAAAAAEAAwAAAD//wEAAAAEAAwAAAAAAAAAAAAFAAwAAAAAAAEAAAAFAAwAAAABAAAAAAAEAAwAAAABAAEAAAAEAAwAAAACAAAAAAAFAAwAAAACAAEAAAAFAAwAAAD9/wAAAAAEAAwAAAD9/wEAAAAEAAwAAAD+/wAAAAAFAAwAAAD+/wEAAAAFAAwAAAABAP7/AAAEAAwAAAABAP//AAAEAAwAAAACAP7/AAAFAAwAAAACAP//AAAFAAwAAAD//wIAAAAEAAwAAAD//wMAAAAEAAwAAAAAAAIAAAAFAAwAAAAAAAMAAAAFAAwAAAD9/wIAAAAEAAwAAAD9/wMAAAAEAAwAAAD+/wIAAAAFAAwAAAD+/wMAAAAFAAwAAAABAAIAAAAEAAwAAAABAAMAAAAEAAwAAAACAAIAAAAFAAwAAAACAAMAAAAFAAwAAAD7/wIAAAAEAAwAAAD7/wMAAAAEAAwAAAD8/wIAAAAFAAwAAAD8/wMAAAAFAAwAAAD7/wAAAAAEAAwAAAD7/wEAAAAEAAwAAAD8/wAAAAAFAAwAAAD8/wEAAAAFAAwAAAD7//7/AAAEAAwAAAD7////AAAEAAwAAAD8//7/AAAFAAwAAAD8////AAAFAAwAAAD5//z/AAADAAwAAAD5//3/AAADAA0AAAD6//z/AAAFAAwAAAD6//3/AAAFAAwAAAD5//7/AAADAAwAAAD5////AAADAA0AAAD6//7/AAAFAAwAAAD6////AAAFAAwAAAD5/wAAAAADAAwAAAD5/wEAAAADAA0AAAD6/wAAAAAFAAwAAAD6/wEAAAAFAAwAAAD5/wIAAAACAA4AAAD6/wIAAAADAA4AAAD6/wMAAAACAA8AAAD7//z/AAAEAAwAAAD7//3/AAAEAAwAAAD8//z/AAAFAAwAAAD8//3/AAAFAAwAAAD7/wQAAAAEAAwAAAD8/wQAAAAFAAwAAAD9//z/AAAEAAwAAAD9//3/AAAEAAwAAAD+//z/AAAFAAwAAAD+//3/AAAFAAwAAAD9/wQAAAAEAAwAAAD+/wQAAAAFAAwAAAD///z/AAAEAAwAAAD///3/AAAEAAwAAAAAAPz/AAAFAAwAAAAAAP3/AAAFAAwAAAD//wQAAAAEAAwAAAAAAAQAAAAFAAwAAAABAPz/AAAEAAwAAAABAP3/AAAEAAwAAAACAPz/AAAFAAwAAAACAP3/AAAFAAwAAAABAAQAAAAEAAwAAAACAAQAAAAFAAwAAAADAPz/AAAEAAwAAAADAP3/AAAEAAwAAAAEAPz/AAAGAAsAAAAEAP3/AAAGAAsAAAADAP7/AAAEAAwAAAADAP//AAAEAAwAAAAEAP7/AAAGAAsAAAAEAP//AAAGAAsAAAADAAAAAAAEAAwAAAADAAEAAAAEAAwAAAAEAAAAAAAGAAsAAAAEAAEAAAAGAAsAAAADAAIAAAAEAAwAAAADAAMAAAAEAAwAAAAEAAIAAAAGAAsAAAAEAAMAAAAGAAsAAAADAAQAAAAEAAwAAAAEAAQAAAAGAAsAAAD4//z/AAACAAwAAAD4//3/AAACAA0AAAD4//7/AAACAAwAAAD4////AAACAA0AAAD4/wAAAAACAAwAAAD4/wEAAAACAA0AAAD4//v/AAADAAoAAAD5//v/AAAEAAoAAAD6//v/AAAFAAoAAAD7//v/AAAEAAoAAAD8//v/AAAFAAoAAAD9//v/AAAEAAoAAAD+//v/AAAFAAoAAAD///v/AAAEAAoAAAAAAPv/AAAFAAoAAAABAPv/AAAEAAoAAAACAPv/AAAFAAoAAAADAPv/AAAEAAoAAAAEAPv/AAAGAAoAAAD6//r/AAACAAkAAAD4//r/AAAAAAkAAAD5//r/AAABAAkAAAD7//r/AAADAAkAAAD8//r/AAAEAAkAAAD9//r/AAAEAAkAAAD+//r/AAAFAAkAAAD///r/AAAGAAkAAAAAAPr/AAAEAAkAAAABAPr/AAAHAAkAAAACAPr/AAAIAAkAAAADAPr/AAAJAAkAAAAEAPr/AAAKAAkAAAD5//n/AAABAAgAAAD6//n/AAACAAgAAAD7//n/AAADAAgAAAD8//n/AAAEAAgAAAD9//n/AAAEAAgAAAD+//n/AAAFAAgAAAD///n/AAAGAAgAAAAAAPn/AAAGAAgAAAABAPn/AAAHAAgAAAACAPn/AAAIAAgAAAADAPn/AAAJAAgAAAD6//j/AAACAAcAAAD7//j/AAADAAcAAAD8//j/AAAEAAcAAAD9//j/AAAFAAcAAAD+//j/AAAFAAcAAAD///j/AAAFAAcAAAAAAPj/AAAGAAcAAAABAPj/AAAHAAcAAAACAPj/AAAIAAcAAAD7//f/AAADAAYAAAD8//f/AAAEAAYAAAD9//f/AAAFAAYAAAD+//f/AAAFAAYAAAD///f/AAAFAAYAAAAAAPf/AAAGAAYAAAABAPf/AAAHAAYAAAD8//b/AAAEAAUAAAD9//b/AAAFAAUAAAD+//b/AAAFAAUAAAD///b/AAAFAAUAAAAAAPb/AAAGAAUAAAD9//X/AAAFAAQAAAD+//X/AAAFAAQAAAD///X/AAAFAAQAAAD6/wQAAAACAA8AAAA=")
 tile_set = SubResource("TileSet_oi3di")
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Outside"]
-light_mask = 4
-visibility_layer = 4
-position = Vector2(-111, -2)
-rotation = 0.523599
-amount = 6
-lifetime = 10.0
-preprocess = 5.0
-speed_scale = 1.2
-emission_shape = 3
-emission_rect_extents = Vector2(5, 7.5)
-gravity = Vector2(1, -0.25)
-orbit_velocity_min = -0.01
-orbit_velocity_max = -0.01
-color_ramp = SubResource("Gradient_metfq")
-
-[node name="CPUParticles2D2" type="CPUParticles2D" parent="Outside"]
-light_mask = 4
-visibility_layer = 4
-position = Vector2(-107, -12)
-rotation = 0.523599
-amount = 6
-lifetime = 10.0
-preprocess = 5.0
-speed_scale = 1.2
-emission_shape = 3
-emission_rect_extents = Vector2(5, 7.5)
-gravity = Vector2(1, 0.5)
-orbit_velocity_min = 0.01
-orbit_velocity_max = 0.01
-color_ramp = SubResource("Gradient_metfq")
-
-[node name="Lights" type="Node2D" parent="Outside"]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Outside/Lights"]
-root_node = NodePath("../../..")
-libraries = {
-&"": SubResource("AnimationLibrary_6syyc")
-}
-autoplay = "new_animation"
-
-[node name="LightOccluder2D4" type="LightOccluder2D" parent="Outside/Lights"]
-position = Vector2(-35, -20)
-occluder = SubResource("OccluderPolygon2D_metfq")
-occluder_light_mask = 4
-
-[node name="Sprite2D" type="Sprite2D" parent="Outside/Lights/LightOccluder2D4"]
-position = Vector2(-105.947, -26.4278)
-rotation = -0.523599
-scale = Vector2(0.0315207, 0.0247769)
-skew = 0.179769
-texture = ExtResource("3_6syyc")
-
-[node name="Sun" type="PointLight2D" parent="Outside/Lights"]
-position = Vector2(-152, -26)
-rotation = 0.125844
-scale = Vector2(0.340942, 0.340942)
-color = Color(0.759908, 0.536789, 0.300291, 1)
-energy = 2.0
-range_item_cull_mask = 524292
-shadow_enabled = true
-shadow_filter = 2
-shadow_item_cull_mask = 524292
-texture = SubResource("GradientTexture2D_vy7fe")
-texture_scale = 2.0
-
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="Outside/Lights"]
-root_node = NodePath("../../..")
-libraries = {
-&"": SubResource("AnimationLibrary_2y50f")
-}
-autoplay = "breathing"
-
-[node name="PointLight2D3" type="PointLight2D" parent="Outside/Lights"]
-light_mask = 0
-visibility_layer = 0
-position = Vector2(-89, 58)
-scale = Vector2(0.228163, 0.228163)
-enabled = false
-color = Color(0.759908, 0.536789, 0.300291, 1)
-energy = 1.97
-range_item_cull_mask = 2
-shadow_item_cull_mask = 0
-texture = SubResource("GradientTexture2D_o1325")
-texture_scale = 4.33333
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Outside/Lights"]
-visible = false
-occluder = SubResource("OccluderPolygon2D_10qhy")
-occluder_light_mask = 513
 
 [node name="room_area" type="Area2D" parent="."]
 unique_name_in_owner = true

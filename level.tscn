@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=4 uid="uid://d0clhg85swu3s"]
+[gd_scene load_steps=12 format=4 uid="uid://d0clhg85swu3s"]
 
 [ext_resource type="Texture2D" uid="uid://y1ksk6ik82vs" path="res://Legacy Adventure Pack - VILLAGE/Final/Tiles/Background_2.png" id="1_0b4ue"]
 [ext_resource type="Script" uid="uid://c4x47dn48ml74" path="res://level.gd" id="1_1ainy"]
 [ext_resource type="Texture2D" uid="uid://t2ggo1q2itq8" path="res://Legacy Adventure Pack - VILLAGE/Final/Tiles/Tiles.png" id="1_u52ul"]
 [ext_resource type="PackedScene" uid="uid://dd87xu0bcjcyh" path="res://house.tscn" id="5_1ainy"]
 [ext_resource type="PackedScene" uid="uid://dsuutpapf33q1" path="res://character_body_2d.tscn" id="5_f2txt"]
+[ext_resource type="PackedScene" uid="uid://dshdjerixhl16" path="res://outside_torch.tscn" id="6_1ainy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vonw3"]
 texture = ExtResource("1_u52ul")
@@ -479,13 +480,15 @@ size = Vector2(862, 10.5)
 [sub_resource type="Gradient" id="Gradient_f2txt"]
 interpolation_mode = 2
 interpolation_color_space = 2
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+colors = PackedColorArray(0.877616, 0.877616, 0.877616, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_f2txt"]
 gradient = SubResource("Gradient_f2txt")
+width = 128
+height = 128
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 0)
+fill_to = Vector2(0.145, 0)
 
 [node name="Level" type="Node2D"]
 light_mask = 2
@@ -523,7 +526,7 @@ shape = SubResource("RectangleShape2D_u52ul")
 [node name="House" parent="." instance=ExtResource("5_1ainy")]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("5_f2txt")]
-position = Vector2(-108, 68)
+position = Vector2(-193, 64)
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
 visible = false
@@ -540,6 +543,9 @@ position = Vector2(430, 0)
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 energy = 0.05
 blend_mode = 1
+
+[node name="OutsideTorch" parent="." instance=ExtResource("6_1ainy")]
+position = Vector2(-162, 66)
 
 [connection signal="entered_room" from="House" to="." method="_on_house_entered_room"]
 [connection signal="exited_room" from="House" to="." method="_on_house_exited_room"]
